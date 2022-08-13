@@ -1,4 +1,6 @@
 en:
   js:
-    discourse_plugin_name:
-      placeholder: placeholder
+    user_tags:
+      preferences: 
+        tags: tags I own
+        title: User Tags

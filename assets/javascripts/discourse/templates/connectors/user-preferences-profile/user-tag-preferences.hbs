@@ -1,0 +1,10 @@
+<label class="control-label">{{i18n 'user_tags.preferences.title'}}</label>
+
+{{this.currentUser.user_tags}}
+
+<TagChooser @tags={{this.currentUser.user_tags}} @onChange={{action "changeSelectedTags"}} @everyTag={{true}} @unlimitedTagCount={{true}} @options={{hash
+    allowAny=true
+  }} />
+
+<div class="desc">{{html-safe this.setting.description}}</div>
+<SettingValidationMessage @message={{this.validationMessage}} />
