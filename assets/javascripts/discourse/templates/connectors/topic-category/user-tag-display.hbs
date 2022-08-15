@@ -1,14 +1,8 @@
 {{#if this.topic.tag_owners}}
   tag owner:
   {{#each this.topic.tag_owners as |username|}}
-    <a
-      href="/u/{{username}}"
-      data-user-card={{username}}
-    >
-      {{avatar
-        username
-        imageSize="small"
-      }}{{username}}
+    <a href="/u/{{username}}" data-user-card={{username}}>
+      {{avatar username imageSize="small"}}{{username}}
     </a>
   {{/each}}
 {{/if}}
