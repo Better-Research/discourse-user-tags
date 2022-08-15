@@ -1,0 +1,12 @@
+{{#if this.topic.tag_owner}}
+  tag owner:
+  <a
+    href="/u/{{this.topic.tag_owner.username}}"
+    data-user-card={{this.topic.tag_owner.username}}
+  >
+    {{avatar
+      this.topic.tag_owner
+      imageSize="small"
+    }}{{this.topic.tag_owner.username}}
+  </a>
+{{/if}}

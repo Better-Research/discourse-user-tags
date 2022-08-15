@@ -2,9 +2,3 @@
 
 {{this.currentUser.user_tags}}
 
-<TagChooser @tags={{this.currentUser.user_tags}} @onChange={{action "changeSelectedTags"}} @everyTag={{true}} @unlimitedTagCount={{true}} @options={{hash
-    allowAny=true
-  }} />
-
-<div class="desc">{{html-safe this.setting.description}}</div>
-<SettingValidationMessage @message={{this.validationMessage}} />
