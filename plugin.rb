@@ -16,11 +16,11 @@ after_initialize do
   DiscoursePluginRegistry.serialized_current_user_fields << 'tags'
   add_to_serializer(:topic_view, :tag_owners) do
     puts "Looking for #{object.topic.user.id}"
-    puts "topic tag #{object.topic.tags.first}"
+    puts "topic tags count #{object.topic.tags.count}"
     puts "my tags #{object.topic.user.custom_fields['tags']}"
     user_tag = object.topic.user.custom_fields['tags'] ? object.topic.user.custom_fields['tags'].first : nil
-    tag = object.topic.tags ? object.topic.tags.first : nil
-    ucf = tag ? UserCustomField.where(value: tag.name) : nil
+    tags = object.topic.tags.pluck(:name)
+    ucf = UserCustomField.where('value in (?)', tags)
     users = []
     ucf.each do |user|
       name = User.find(user.user_id).username
@@ -29,7 +29,7 @@ after_initialize do
     end
     puts "here are the users: #{users.first}, #{users.last}"
     puts "got the ucf: #{ucf.first}"
-    users
+    users.uniq
   end
   add_to_serializer(:user, :user_tags) do
     object.custom_fields['tags']
